@@ -28,6 +28,8 @@ class Result
     {
         public static void Main(string[] args)
         {
+            TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
             int stringsCount = Convert.ToInt32(Console.ReadLine().Trim());
 
             List<string> strings = new List<string>();
@@ -49,7 +51,11 @@ class Result
             }
 
             List<int> res = Result.matchingStrings(strings, queries);
+
+            textWriter.WriteLine(String.Join("\n", res));
+
+            textWriter.Flush();
+            textWriter.Close();
         }
     }
-
 }
